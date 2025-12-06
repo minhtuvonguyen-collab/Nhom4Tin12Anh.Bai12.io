@@ -89,6 +89,10 @@ nav.topmenu a:hover {
     color:#FFD93D;
     transform: translateY(-2px);
 }
+/* Đồng bộ toàn bộ font chữ */
+* {
+    font-family: 'Poppins', sans-serif !important;
+}
 </style>
 <script>
 function toggle(id){
@@ -111,176 +115,41 @@ function toggle(id){
 // Hiệu ứng cuộn mượt + nảy (bounce)
 function bounceScroll(targetID){
     const el = document.getElementById(targetID);
-    if(!el) return;
-    // Cuộn mượt
+    if (!el) return;
+
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    // Sau khi cuộn xong thì nảy
-    setTimeout(()=>{
-        el.style.transition = 'transform 0.25s ease';
-        el.style.transform = 'translateY(-10px)';
-        setTimeout(()=>{
-            el.style.transform = 'translateY(0)';
-        }, 250);
+    setTimeout(() => {
+        el.style.transition = 'transform 0.45s cubic-bezier(0.30, 2.0, 0.45, 1), box-shadow 0.45s ease';
+        el.style.transform = 'scale(1.18)';
+        el.style.boxShadow = '0 0 45px #ffe47a, 0 0 75px #FFD93D';
+
+        setTimeout(() => {
+            el.style.transform = 'scale(1.06)';
+            el.style.boxShadow = '0 0 25px #FFD93D';
+
+            setTimeout(() => {
+                el.style.transform = 'scale(1)';
+                el.style.boxShadow = '0 0 0 transparent';
+            }, 220);
+        }, 420);
     }, 500);
-}
-</script>
-</head>
-<body>
-<nav class="topmenu">
-    <div>
-        <a href="file:///C:/Users/Win10/Downloads/index.html">⬅ Quay lại</a>
-        <a href="javascript:bounceScroll('luyentap-section')">Luyện tập</a>
-        <a href="javascript:bounceScroll('vd1-section')">Vận dụng 1</a>
-        <a href="javascript:bounceScroll('vd2-section')">Vận dụng 2</a>
-    </div>
-</nav>
-<br><br><br>
-<header>
-    <nav style="position:absolute; top:15px; left:20px;">
-        <a href="file:///C:/Users/Win10/Downloads/index.html" style="background:#FFF4B7; padding:8px 14px; border-radius:8px; color:#000B58; text-decoration:none; font-weight:700;">⬅ QUAY LẠI</a>
-    </nav>
-    
-    <h1 style="font-size:32px; font-weight:600;">Nhóm 4 – Lớp 12 Anh</h1>
-    <h2 style="font-size:50px; font-weight:900; margin-top:12px; letter-spacing:1.5px; color:#FFD93D; text-shadow:0 4px 10px rgba(0,0,0,0.35);">BÀI 12: TẠO BIỂU MẪU</h2>
-    
-</header>
+});
 
-<!-- LUYỆN TẬP -->
-<section id="luyentap-section">
-    <h2>1. Luyện tập</h2>
-    <button onclick="toggle('luyentap')">Hiện / Ẩn bài làm</button>
-    <div id="luyentap" class="details">
-        <h3>Tạo các phần tử form và liệt kê ví dụ</h3>
-        <form>
-            <fieldset>
-                <legend>Label + Input (text)</legend>
-                <label for="ten">Họ tên:</label>
-                <input type="text" id="ten"> 
-                <p>Ví dụ sử dụng: nhập tên, nhập địa chỉ, nhập trường học.</p>
-            </fieldset>
-            <fieldset>
-                <legend>Input password</legend>
-                <input type="password"> 
-                <p>Ví dụ: mật khẩu đăng nhập, mã PIN, mật khẩu wifi.</p>
-            </fieldset>
-            <fieldset>
-                <legend>Input radio</legend>
-                <input type="radio" name="gt"> Nam
-                <input type="radio" name="gt"> Nữ
-                <p>Ví dụ: chọn giới tính, chọn lớp, chọn ca học.</p>
-            </fieldset>
-            <fieldset>
-                <legend>Input checkbox</legend>
-                <input type="checkbox"> Đọc sách
-                <input type="checkbox"> Xem phim
-                <p>Ví dụ: chọn sở thích, chọn môn học yêu thích, chọn tùy chọn thêm.</p>
-            </fieldset>
-            <fieldset>
-                <legend>Input button</legend>
-                <input type="button" value="Nhấn thử">
-                <p>Ví dụ: nút chạy lệnh, nút mở hộp thoại, nút đổi màu.</p>
-            </fieldset>
-            <fieldset>
-                <legend>Input file</legend>
-                <input type="file">
-                <p>Ví dụ: tải ảnh, tải video, tải tài liệu.</p>
-            </fieldset>
-            <fieldset>
-                <legend>Input submit</legend>
-                <input type="submit" value="Gửi dữ liệu">
-                <p>Ví dụ: gửi biểu mẫu đăng ký, gửi khảo sát, gửi phản hồi.</p>
-            </fieldset>
-            <fieldset>
-                <legend>Select</legend>
-                <label for="lop">Chọn lớp:</label>
-                <select id="lop">
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-                <p>Ví dụ: chọn lớp, chọn màu sắc, chọn môn học.</p>
-            </fieldset>
-            <fieldset>
-                <legend>Textarea</legend>
-                <textarea rows="4" cols="40">Nhập ghi chú...</textarea>
-                <p>Ví dụ: ghi chú, mô tả sản phẩm, phản hồi.</p>
-            </fieldset>
-        </form>
-    </div>
-</section>
+    // Hiệu ứng zoom + bounce mạnh + glow
+    setTimeout(()=>{
+        el.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease';
 
-<!-- VẬN DỤNG 1 -->
-<section id="vd1-section">
-    <h2>2. Vận dụng 1</h2>
-    <button onclick="toggle('vd1')">Hiện / Ẩn bài làm</button>
-    <div id="vd1" class="details">
-        <p>Biểu mẫu đăng ký thành viên câu lạc bộ:</p>
-        <button onclick="openModal('modalVD1')">Mở biểu mẫu</button>
-    </div>
-</section>
+        // Zoom lớn + glow
+        el.style.transform = 'scale(1.08)';
+        el.style.boxShadow = '0 0 25px #FFD93D';
 
-<!-- VẬN DỤNG 2 -->
-<section id="vd2-section">
-    <h2>3. Vận dụng 2</h2>
-    <button onclick="toggle('vd2')">Hiện / Ẩn bài làm</button>
-    <div id="vd2" class="details">
-        <h3>Quốc ca — Tiến Quân Ca</h3>
-        <audio controls src="https://github.com/minhtuvonguyen-collab/Nhom4Tin12Anh.Bai12.io/raw/main/Vietnam_National_Anthem_-_Tien_Quan_Ca.mp3"></audio>
-        <p style="margin-top:12px;">Nhấn vào nút dưới để mở biểu mẫu Đăng kí:</p>
-        <button onclick="openModal('modalVD2')">Đăng kí</button>
-    </div>
-    </div>
-</section>
-
-<!-- MODAL TEMPLATE FOR VD1 -->
-<div id="modalVD1" class="modal hidden">
-    <div class="modal-box">
-        <span class="close" onclick="closeModal('modalVD1')">×</span>
-        <h2>Biểu mẫu đăng ký thành viên CLB</h2>
-        <iframe src="https://minhtuvonguyen-collab.github.io/Tin12Bai12.VD.io/" style="width:100%; height:500px; border:none; border-radius:10px;"></iframe>
-    </div>
-</div>
-
-<!-- MODAL FOR VD2 (Form được dựng trực tiếp) -->
-<div id="modalVD2" class="modal hidden">
-    <div class="modal-box">
-        <span class="close" onclick="closeModal('modalVD2')">×</span>
-        <h2>Biểu mẫu đăng ký thành viên CLB</h2>
-        <iframe src="https://minhtuvonguyen-collab.github.io/Tin12Bai12.VD.io/" style="width:100%; height:500px; border:none; border-radius:10px;"></iframe>
-    </div>
-</div>
-</div>
-
-<style>
-.modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.55);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-.hidden { display: none; }
-.modal-box {
-    background: white;
-    width: 90%; max-width: 620px;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    animation: popUp 0.35s ease;
-}
-.close {
-    float:right;
-    cursor:pointer;
-    font-size:26px;
-    margin-top:-10px;
-}
-@keyframes popUp {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+        setTimeout(()=>{
+            // Thu lại bình thường nhưng vẫn nhẹ nhàng
+            el.style.transform = 'scale(1)';
+            el.style.boxShadow = '0 0 0px transparent';
+        }, 350);
+    }, 500);
 }
 </style>
 
