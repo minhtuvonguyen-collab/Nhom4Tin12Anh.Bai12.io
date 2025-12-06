@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -90,6 +89,10 @@ nav.topmenu a:hover {
     color:#FFD93D;
     transform: translateY(-2px);
 }
+/* Đồng bộ toàn bộ font chữ */
+* {
+    font-family: 'Poppins', sans-serif !important;
+}
 </style>
 <script>
 function toggle(id){
@@ -112,17 +115,29 @@ function toggle(id){
 // Hiệu ứng cuộn mượt + nảy (bounce)
 function bounceScroll(targetID){
     const el = document.getElementById(targetID);
-    if(!el) return;
-    // Cuộn mượt
+    if (!el) return;
+
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    // Sau khi cuộn xong thì nảy
-    setTimeout(()=>{
-        el.style.transition = 'transform 0.25s ease';
-        el.style.transform = 'translateY(-10px)';
-        setTimeout(()=>{
-            el.style.transform = 'translateY(0)';
-        }, 250);
+    // Zoom cực mạnh + double bounce + glow nổi bật
+    setTimeout(() => {
+        el.style.transition = 'transform 0.45s cubic-bezier(0.30, 2.0, 0.45, 1), box-shadow 0.45s ease';
+
+        // Zoom lớn + glow sáng
+        el.style.transform = 'scale(1.18)';
+        el.style.boxShadow = '0 0 45px #ffe47a, 0 0 75px #FFD93D';
+
+        setTimeout(() => {
+            // Bounce lần 2 mạnh
+            el.style.transform = 'scale(1.06)';
+            el.style.boxShadow = '0 0 25px #FFD93D';
+
+            setTimeout(() => {
+                // Trở lại bình thường
+                el.style.transform = 'scale(1)';
+                el.style.boxShadow = '0 0 0 transparent';
+            }, 220);
+        }, 420);
     }, 500);
 }
 </script>
@@ -130,7 +145,7 @@ function bounceScroll(targetID){
 <body>
 <nav class="topmenu">
     <div>
-        <a href="file:///C:/Users/Win10/Downloads/index.html">⬅ Quay lại</a>
+        <a href="https://daisubinta.github.io/Nhom4tin12anh.github.io/">⬅ Quay lại</a>
         <a href="javascript:bounceScroll('luyentap-section')">Luyện tập</a>
         <a href="javascript:bounceScroll('vd1-section')">Vận dụng 1</a>
         <a href="javascript:bounceScroll('vd2-section')">Vận dụng 2</a>
@@ -139,11 +154,11 @@ function bounceScroll(targetID){
 <br><br><br>
 <header>
     <nav style="position:absolute; top:15px; left:20px;">
-        <a href="file:///C:/Users/Win10/Downloads/index.html" style="background:#FFF4B7; padding:8px 14px; border-radius:8px; color:#000B58; text-decoration:none; font-weight:700;">⬅ QUAY LẠI</a>
+        <a href="https://daisubinta.github.io/Nhom4tin12anh.github.io/" style="background:#FFF4B7; padding:8px 14px; border-radius:8px; color:#000B58; text-decoration:none; font-weight:700;">⬅ QUAY LẠI</a>
     </nav>
     
     <h1 style="font-size:32px; font-weight:600;">Nhóm 4 – Lớp 12 Anh</h1>
-    <h2 style="font-size:50px; font-weight:900; margin-top:12px; letter-spacing:1.5px; color:#FFD93D; text-shadow:0 4px 10px rgba(0,0,0,0.35);">BÀI 12: TẠO BIỂU MẪU</h2>
+    <h2 style="font-size:52px; font-weight:700; margin-top:12px; letter-spacing:2px; color:#FFD93D; text-shadow:0 5px 14px rgba(0,0,0,0.55), 0 0 12px #FFD93D; font-family: 'Poppins', sans-serif;">BÀI 12: TẠO BIỂU MẪU</h2>
     
 </header>
 
